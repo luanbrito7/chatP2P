@@ -1,6 +1,7 @@
 package user;
+import java.io.Serializable;
 
-public class User {
+public class User implements Serializable{
 
 	private String name;
 	private String ipAddress;
@@ -20,10 +21,10 @@ public class User {
 		return this.name;
 	}
 	public String getIPAddress(){
-		return ipAddress;
+		return this.ipAddress;
 	}
 	public int getPort(){
-		return port;
+		return this.port;
 	}
 	
 

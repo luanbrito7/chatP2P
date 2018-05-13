@@ -13,6 +13,9 @@ public class UserRepository {
 	public int getSize(){
 		return this.size; 
 	}
+	public int getCurrentUser(){
+		return this.currentUser;
+	}
 	
 	public User [] getClientList(){
 		return array;
@@ -51,5 +54,13 @@ public class UserRepository {
 			aux[c] = this.array[c];
 		}
 		this.array = aux;
+	}
+	
+	public void showRepository(){
+		for(int c = 0; c < this.currentUser; c++){
+			System.out.print("Name: " + this.array[c].getName() + " ");
+			System.out.print("Address: " + this.array[c].getIPAddress() + " ");
+			System.out.println("Port: " + this.array[c].getPort());
+		}
 	}
 }
