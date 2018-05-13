@@ -17,7 +17,7 @@ public class User {
 	}
 	
 	public String getName(){
-		return name;
+		return this.name;
 	}
 	public String getIPAddress(){
 		return ipAddress;
@@ -25,8 +25,6 @@ public class User {
 	public int getPort(){
 		return port;
 	}
-	public void changeUserName(String name){
-		this.name = name;
-	}
+	
 
 }
