@@ -1,6 +1,7 @@
 package user;
 
-public class UserRepository {
+import java.io.Serializable;
+public class UserRepository implements Serializable{
 	private User [] array;
 	private int currentUser;
 	private int size;
