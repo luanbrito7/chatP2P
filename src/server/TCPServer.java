@@ -19,8 +19,12 @@ public class TCPServer{
 			Socket clientSocket = ss.accept();
 			System.out.println("Conection established. type QUIT to disconnect");
 			RcvDataThread rcv = new RcvDataThread(clientSocket);
-			
-		}
+			Thread threadR = new Thread(rcv);
+			threadR.start();
+			SndDataThread snd = new SndDataThread(clientSocket);
+			Thread threadS = new Thread(snd);
+			threadS.start();
+			}
 			
 	}
 
