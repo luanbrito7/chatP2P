@@ -12,13 +12,17 @@ import java.net.Socket;
 import java.net.UnknownHostException;
 import java.util.Scanner;
 
-public class TCPClient implements Runnable{
-	private static Socket client;
-	private static int portaDestino = 3001;
+public class TCPClient {
 	 public static void main(String args[]) {
-		 int portaDestino = 3001;
+		final int portaDestino = 3001;
 		try {
 			Socket client = new Socket("localhost", portaDestino);
+			SendThread sendThread = new SendThread(client);
+			Thread thread = new Thread(sendThread);
+			thread.start();
+			RecieveThread recieveThread = new RecieveThread(client);
+			Thread thread2 =new Thread(recieveThread);
+			thread2.start();
 		} catch (UnknownHostException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
@@ -26,29 +30,6 @@ public class TCPClient implements Runnable{
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-		 Scanner in = new Scanner(System.in);
-		 boolean read = false;
 
-		 try {
-			 PrintStream saida = new PrintStream(client.getOutputStream());
-			 read = true;
-			 while (read) {
-				 saida.println(in.nextLine());
-			 }
-//			text = in.nextLine();
-//			output.writeUTF(text);
-		} catch (UnknownHostException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}	 
 	 }
-
-	@Override
-	public void run() {
-		// TODO Auto-generated method stub
-		
-	}
 }
